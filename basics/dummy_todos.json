@@ -1,0 +1,19 @@
+[
+    {
+    "id": 1,
+    "title": "Buy groceries",
+    "text": "Milk, Bread, Eggs",
+    "is_done": false,
+    "owner_id": 1,
+    "position": 1
+},
+    {
+    "id": 2,
+    "title": "Meeting with Bob",
+    "text": "Discuss project details",
+    "is_done": false,
+    "owner_id": 1,
+    "position": 2
+}
+]
+

@@ -61,8 +61,7 @@ class TodosViewModelTests: XCTestCase {
     // Testing the successful fetch of todos
     func testFetchTodosSuccess() async {
         // Given
-        let expectedTodos = [ToDo(id: 1, title: "Test1", text: "Test", isDone: true, ownerId: 1, position: 1),
-                             ToDo(id: 2, title: "Test2", text: "Test", isDone: true, ownerId: 1, position: 2)]
+        let expectedTodos = ToDo.mockData
         mockAPIService.todos = expectedTodos
         
         // When
@@ -91,8 +90,7 @@ class TodosViewModelTests: XCTestCase {
     //Testing the getTodoCount method
     func testGetTodoCount(){
         // Given
-        let todos = [ToDo(id: 1, title: "Test1", text: "Test", isDone: true, ownerId: 1, position: 1),
-                     ToDo(id: 2, title: "Test2", text: "Test", isDone: true, ownerId: 1, position: 2)]
+        let todos = ToDo.mockData
         
         viewModel.todos = todos
         
@@ -100,15 +98,14 @@ class TodosViewModelTests: XCTestCase {
         let count = viewModel.getTodoCount()
         
         //Then
-        XCTAssertEqual(count, 2)
+        XCTAssertEqual(count, 5)
         
     }
     
     // Testing getTodoForIndex method
     func testGetTodoForIndex() {
         // Given
-        let todos = [ToDo(id: 1, title: "Test1", text: "Test", isDone: true, ownerId: 1, position: 1),
-                     ToDo(id: 2, title: "Test2", text: "Test", isDone: true, ownerId: 1, position: 2)]
+        let todos = ToDo.mockData
         viewModel.todos = todos
         
         // When

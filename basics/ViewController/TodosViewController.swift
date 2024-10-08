@@ -26,16 +26,18 @@ class TodosViewController: UIViewController {
         title = "Todos"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        viewModel = TodosViewModel()
-        viewModel.delegate = self
         
         contentArea.addToSafeArea(to: view, padding: 20)
         setupTableView()
         
         
-        // Load todos
-        Task{
-            await viewModel.fetchTodos()
+        viewModel.delegate = self
+        
+        if !viewModel.todosAreLoaded{
+            // Load todos
+            Task{
+                await viewModel.fetchTodos()
+            }
         }
     }
     

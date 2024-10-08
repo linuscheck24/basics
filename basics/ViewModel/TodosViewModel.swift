@@ -19,18 +19,22 @@ class TodosViewModel {
     
     var todos: [ToDo] = []
     var selectedTodoIndex: Int?
+    var todosAreLoaded: Bool = false
     
     init(apiService: APIService = APIService.shared) {
         self.apiService = apiService
     }
     
     func fetchTodos() async{
-        do {
-            let todoResponse = try await apiService.fetchUserTodos()
-            todos = todoResponse
-            delegate?.didUpdateTodos()
-        } catch {
-            delegate?.didFailWithError(error)
+        if !todosAreLoaded{
+            do {
+                let todoResponse = try await apiService.fetchUserTodos()
+                todos = todoResponse
+                delegate?.didUpdateTodos()
+                todosAreLoaded = true
+            } catch {
+                delegate?.didFailWithError(error)
+            }
         }
     }
     

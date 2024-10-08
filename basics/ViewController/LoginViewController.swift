@@ -132,6 +132,7 @@ class LoginViewController: UIViewController {
                     print("Login successful: \(tokenResponse.access_token)")
                     
                     let nextScreen = TodosViewController()
+                    nextScreen.viewModel = TodosViewModel()
                     self.navigationController?.setViewControllers([nextScreen], animated: true)
                 } catch let apiError as APIServiceError{
                     print("Login failed: \(apiError.localizedDescription)")
