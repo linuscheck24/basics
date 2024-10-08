@@ -11,7 +11,7 @@ import UIKit
 class TodosViewController: UIViewController {
     
     let tableView = UITableView()
-    let myView = UIView()
+    let contentArea = UIView()
     
     var viewModel: TodosViewModel!
     
@@ -29,12 +29,13 @@ class TodosViewController: UIViewController {
         title = "Todos"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        setupMyView(padding: 20)
+        contentArea.addToSafeArea(to: view, padding: 20)
+        
         setupTableView()
     }
     
     func setupTableView(){
-        myView.addSubview(tableView)
+        contentArea.addSubview(tableView)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -44,24 +45,7 @@ class TodosViewController: UIViewController {
         tableView.rowHeight = 100
         tableView.register(TodoTableViewCell.self, forCellReuseIdentifier: Cells.todoCell)
         
-        tableView.pin(to: myView)
-        
-    }
-    
-    
-    
-    func setupMyView(padding: CGFloat = 0){
-        view.addSubview(myView)
-        
-        myView.translatesAutoresizingMaskIntoConstraints = false
-        
-        
-        NSLayoutConstraint.activate([
-            myView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
-            myView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            myView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding),
-            myView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding)
-        ])
+        tableView.pin(to: contentArea)
         
     }
     

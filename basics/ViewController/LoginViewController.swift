@@ -13,7 +13,7 @@ class LoginViewController: UIViewController {
     let passwordTextField = UITextField()
     let loginButton = UIButton()
     let signupStackView  = UIStackView()
-    let myView = UIView()
+    let contentArea = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,8 @@ class LoginViewController: UIViewController {
         title = "Login"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        setupMyView(padding: 20.0)
+        contentArea.addToSafeArea(to: view, padding: 20)
+        
         setupLoginButton()
         setupPasswordTextField()
         setupUsernameTextField()
@@ -31,7 +32,7 @@ class LoginViewController: UIViewController {
     }
     
     func setupSignupStackView(){
-        myView.addSubview(signupStackView)
+        contentArea.addSubview(signupStackView)
         signupStackView.translatesAutoresizingMaskIntoConstraints = false
         
         signupStackView.axis = .vertical
@@ -52,15 +53,15 @@ class LoginViewController: UIViewController {
         signupStackView.addArrangedSubview(signUpButton)
         
         NSLayoutConstraint.activate([
-            signupStackView.leadingAnchor.constraint(equalTo: myView.leadingAnchor),
-            signupStackView.trailingAnchor.constraint(equalTo: myView.trailingAnchor),
-            signupStackView.bottomAnchor.constraint(equalTo: myView.safeAreaLayoutGuide.bottomAnchor)
+            signupStackView.leadingAnchor.constraint(equalTo: contentArea.leadingAnchor),
+            signupStackView.trailingAnchor.constraint(equalTo: contentArea.trailingAnchor),
+            signupStackView.bottomAnchor.constraint(equalTo: contentArea.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
     
     func setupPasswordTextField(){
-        myView.addSubview(passwordTextField)
+        contentArea.addSubview(passwordTextField)
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         
         passwordTextField.borderStyle = .roundedRect
@@ -68,15 +69,15 @@ class LoginViewController: UIViewController {
         passwordTextField.isSecureTextEntry = true
         
         NSLayoutConstraint.activate([
-            passwordTextField.leadingAnchor.constraint(equalTo: myView.leadingAnchor),
-            passwordTextField.trailingAnchor.constraint(equalTo: myView.trailingAnchor),
+            passwordTextField.leadingAnchor.constraint(equalTo: contentArea.leadingAnchor),
+            passwordTextField.trailingAnchor.constraint(equalTo: contentArea.trailingAnchor),
             passwordTextField.bottomAnchor.constraint(equalTo: loginButton.topAnchor, constant: -10),
             passwordTextField.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
     func setupUsernameTextField(){
-        myView.addSubview(usernameTextField)
+        contentArea.addSubview(usernameTextField)
         usernameTextField.translatesAutoresizingMaskIntoConstraints = false
         
         usernameTextField.borderStyle = .roundedRect
@@ -84,30 +85,16 @@ class LoginViewController: UIViewController {
         usernameTextField.autocapitalizationType = .none
         
         NSLayoutConstraint.activate([
-            usernameTextField.leadingAnchor.constraint(equalTo: myView.leadingAnchor),
-            usernameTextField.trailingAnchor.constraint(equalTo: myView.trailingAnchor),
+            usernameTextField.leadingAnchor.constraint(equalTo: contentArea.leadingAnchor),
+            usernameTextField.trailingAnchor.constraint(equalTo: contentArea.trailingAnchor),
             usernameTextField.bottomAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: -10),
             usernameTextField.heightAnchor.constraint(equalToConstant: 50)
         ])
         
     }
     
-    func setupMyView(padding: CGFloat = 0){
-        view.addSubview(myView)
-        
-        myView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            myView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
-            myView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            myView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding),
-            myView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding)
-        ])
-        
-    }
-    
     func setupLoginButton(){
-        myView.addSubview(loginButton)
+        contentArea.addSubview(loginButton)
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         
         loginButton.configuration = .borderedProminent()
@@ -119,9 +106,9 @@ class LoginViewController: UIViewController {
         }, for: .primaryActionTriggered)
         
         NSLayoutConstraint.activate([
-            loginButton.leadingAnchor.constraint(equalTo: myView.leadingAnchor),
-            loginButton.trailingAnchor.constraint(equalTo: myView.trailingAnchor),
-            loginButton.topAnchor.constraint(equalTo: myView.safeAreaLayoutGuide.topAnchor, constant: 200),
+            loginButton.leadingAnchor.constraint(equalTo: contentArea.leadingAnchor),
+            loginButton.trailingAnchor.constraint(equalTo: contentArea.trailingAnchor),
+            loginButton.topAnchor.constraint(equalTo: contentArea.safeAreaLayoutGuide.topAnchor, constant: 200),
             loginButton.heightAnchor.constraint(equalToConstant: 50)
         ])
         
@@ -133,9 +120,9 @@ class LoginViewController: UIViewController {
             print("Username: \(username), Password: \(password)")
             
             let spinner = UIActivityIndicatorView(style: .medium)
-            spinner.center = myView.center
+            spinner.center = contentArea.center
             spinner.startAnimating()
-            myView.addSubview(spinner)
+            contentArea.addSubview(spinner)
             
             loginButton.isEnabled = false
             
@@ -146,9 +133,16 @@ class LoginViewController: UIViewController {
                     
                     let nextScreen = TodosViewController()
                     self.navigationController?.setViewControllers([nextScreen], animated: true)
-                } catch {
-                    print("Login failed: \(error.localizedDescription)")
-                    present(UIUtil.getAlert(message: error.localizedDescription), animated: true)
+                } catch let apiError as APIServiceError{
+                    print("Login failed: \(apiError.localizedDescription)")
+                    switch apiError{
+                    case .unauthorized:
+                        present(UIUtil.getAlert(message: "Invalid username or password!"), animated: true)
+                    case .invalidResponse:
+                        present(UIUtil.getAlert(message: "Error: \(apiError.localizedDescription)"), animated: true)
+                    case .invalidURL:
+                        present(UIUtil.getAlert(message: "Invalid URL!"), animated: true)
+                    }
                 }
                 
                 spinner.stopAnimating()

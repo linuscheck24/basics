@@ -18,7 +18,7 @@ class TodoDetailViewController: UIViewController {
     weak var delegate: TodoDetailViewControllerDelegate?
     
     let titleAndDescription = UIStackView()
-    let innerView = UIView()
+    let contentArea = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class TodoDetailViewController: UIViewController {
         
         title = viewModel.getTitle()
         
-        innerView.addToSafeArea(to: view, padding: 10)
+        contentArea.addToSafeArea(to: view, padding: 10)
         
         setupTitleAndDescription()
         setupDeleteButton()
@@ -39,20 +39,20 @@ class TodoDetailViewController: UIViewController {
         let hostingController = UIHostingController(rootView: todoDeleteButton)
         
         addChild(hostingController)
-        innerView.addSubview(hostingController.view)
+        contentArea.addSubview(hostingController.view)
         
         hostingController.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            hostingController.view.leadingAnchor.constraint(equalTo: innerView.leadingAnchor),
-            hostingController.view.trailingAnchor.constraint(equalTo: innerView.trailingAnchor),
-            hostingController.view.bottomAnchor.constraint(equalTo: innerView.bottomAnchor)
+            hostingController.view.leadingAnchor.constraint(equalTo: contentArea.leadingAnchor),
+            hostingController.view.trailingAnchor.constraint(equalTo: contentArea.trailingAnchor),
+            hostingController.view.bottomAnchor.constraint(equalTo: contentArea.bottomAnchor)
         ])
         
         hostingController.didMove(toParent: self)
     }
     
     func setupTitleAndDescription(){
-        innerView.addSubview(titleAndDescription)
+        contentArea.addSubview(titleAndDescription)
         titleAndDescription.translatesAutoresizingMaskIntoConstraints = false
         
         titleAndDescription.axis = .vertical

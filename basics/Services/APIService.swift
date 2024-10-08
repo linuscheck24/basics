@@ -16,7 +16,7 @@ class APIService {
     }
     
     func login(username: String, password: String) async throws -> TokenResponse{
-        guard let url = URL(string: "\(baseURL)/token/") else{
+        guard let url = URL(string: "\(baseURL)/token") else{
             throw APIServiceError.invalidURL
         }
         
@@ -29,7 +29,15 @@ class APIService {
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else{
+        guard let response = response as? HTTPURLResponse else {
+            throw APIServiceError.invalidResponse
+        }
+        print(response.statusCode)
+
+        if response.statusCode == 401 {
+            throw APIServiceError.unauthorized
+        }
+        else if response.statusCode != 200 {
             throw APIServiceError.invalidResponse
         }
         
@@ -51,7 +59,7 @@ class APIService {
         if let token = authToken {
             request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         } else {
-            throw APIServiceError.unauthenticatedRequest
+            throw APIServiceError.unauthorized
         }
         
         let (data, response) = try await URLSession.shared.data(for: request)
@@ -71,5 +79,6 @@ class APIService {
 enum APIServiceError: Error{
     case invalidURL
     case invalidResponse
-    case unauthenticatedRequest
+    case unauthorized
 }
+
