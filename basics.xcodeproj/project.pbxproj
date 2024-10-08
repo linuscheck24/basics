@@ -18,12 +18,23 @@
 		DB85EA1E2CB410A300CFABCF /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB85EA1D2CB410A300CFABCF /* KeychainService.swift */; };
 		DB85EA212CB4112600CFABCF /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB85EA202CB4112600CFABCF /* Auth.swift */; };
 		DB85EA242CB4219400CFABCF /* UIUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB85EA232CB4219400CFABCF /* UIUtil.swift */; };
+		DB8E5A2B2CB530590034440D /* basicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8E5A2A2CB530590034440D /* basicsTests.swift */; };
 		DBB9CB352CAD94F60033734C /* TodosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9CB342CAD94F60033734C /* TodosViewController.swift */; };
 		DBBCAAC02CAD6B7500424C4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBCAABF2CAD6B7500424C4F /* AppDelegate.swift */; };
 		DBBCAAC22CAD6B7500424C4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBCAAC12CAD6B7500424C4F /* SceneDelegate.swift */; };
 		DBBCAAC42CAD6B7500424C4F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBCAAC32CAD6B7500424C4F /* LoginViewController.swift */; };
 		DBBCAAC92CAD6B7600424C4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBBCAAC82CAD6B7600424C4F /* Assets.xcassets */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DB8E5A2C2CB530590034440D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DBBCAAB42CAD6B7500424C4F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DBBCAABB2CAD6B7500424C4F;
+			remoteInfo = basics;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		DB1C06552CB30AB100C7617F /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
@@ -37,6 +48,8 @@
 		DB85EA1D2CB410A300CFABCF /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		DB85EA202CB4112600CFABCF /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		DB85EA232CB4219400CFABCF /* UIUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtil.swift; sourceTree = "<group>"; };
+		DB8E5A282CB530590034440D /* basicsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = basicsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB8E5A2A2CB530590034440D /* basicsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = basicsTests.swift; sourceTree = "<group>"; };
 		DBB9CB342CAD94F60033734C /* TodosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosViewController.swift; sourceTree = "<group>"; };
 		DBBCAABC2CAD6B7500424C4F /* basics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = basics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBBCAABF2CAD6B7500424C4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +60,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		DB8E5A252CB530590034440D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DBBCAAB92CAD6B7500424C4F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -118,10 +138,19 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		DB8E5A292CB530590034440D /* basicsTests */ = {
+			isa = PBXGroup;
+			children = (
+				DB8E5A2A2CB530590034440D /* basicsTests.swift */,
+			);
+			path = basicsTests;
+			sourceTree = "<group>";
+		};
 		DBBCAAB32CAD6B7500424C4F = {
 			isa = PBXGroup;
 			children = (
 				DBBCAABE2CAD6B7500424C4F /* basics */,
+				DB8E5A292CB530590034440D /* basicsTests */,
 				DBBCAABD2CAD6B7500424C4F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				DBBCAABC2CAD6B7500424C4F /* basics.app */,
+				DB8E5A282CB530590034440D /* basicsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,6 +186,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		DB8E5A272CB530590034440D /* basicsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB8E5A302CB530590034440D /* Build configuration list for PBXNativeTarget "basicsTests" */;
+			buildPhases = (
+				DB8E5A242CB530590034440D /* Sources */,
+				DB8E5A252CB530590034440D /* Frameworks */,
+				DB8E5A262CB530590034440D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DB8E5A2D2CB530590034440D /* PBXTargetDependency */,
+			);
+			name = basicsTests;
+			productName = basicsTests;
+			productReference = DB8E5A282CB530590034440D /* basicsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		DBBCAABB2CAD6B7500424C4F /* basics */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DBBCAAD02CAD6B7600424C4F /* Build configuration list for PBXNativeTarget "basics" */;
@@ -183,6 +231,10 @@
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
+					DB8E5A272CB530590034440D = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = DBBCAABB2CAD6B7500424C4F;
+					};
 					DBBCAABB2CAD6B7500424C4F = {
 						CreatedOnToolsVersion = 15.4;
 					};
@@ -202,11 +254,19 @@
 			projectRoot = "";
 			targets = (
 				DBBCAABB2CAD6B7500424C4F /* basics */,
+				DB8E5A272CB530590034440D /* basicsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		DB8E5A262CB530590034440D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DBBCAABA2CAD6B7500424C4F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -218,6 +278,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		DB8E5A242CB530590034440D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB8E5A2B2CB530590034440D /* basicsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DBBCAAB82CAD6B7500424C4F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -242,7 +310,49 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		DB8E5A2D2CB530590034440D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DBBCAABB2CAD6B7500424C4F /* basics */;
+			targetProxy = DB8E5A2C2CB530590034440D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		DB8E5A2E2CB530590034440D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.linus.basicsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/basics.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/basics";
+			};
+			name = Debug;
+		};
+		DB8E5A2F2CB530590034440D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.linus.basicsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/basics.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/basics";
+			};
+			name = Release;
+		};
 		DBBCAACE2CAD6B7600424C4F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -417,6 +527,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		DB8E5A302CB530590034440D /* Build configuration list for PBXNativeTarget "basicsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB8E5A2E2CB530590034440D /* Debug */,
+				DB8E5A2F2CB530590034440D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DBBCAAB72CAD6B7500424C4F /* Build configuration list for PBXProject "basics" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

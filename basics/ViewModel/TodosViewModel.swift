@@ -15,24 +15,22 @@ protocol TodoDelegate: AnyObject {
 class TodosViewModel {
     
     weak var delegate: TodoDelegate?
+    private let apiService: APIService
     
     var todos: [ToDo] = []
     var selectedTodoIndex: Int?
     
-    init() {
-        fetchTodos()
+    init(apiService: APIService = APIService.shared) {
+        self.apiService = apiService
     }
     
-    func fetchTodos() {
-        Task{
-            do {
-                let todoResponse = try await APIService.shared.fetchUserTodos()
-                todos = todoResponse
-                delegate?.didUpdateTodos()
-            } catch {
-                print("Fetching todos failed: \(error.localizedDescription)")
-                delegate?.didFailWithError(error)
-            }
+    func fetchTodos() async{
+        do {
+            let todoResponse = try await apiService.fetchUserTodos()
+            todos = todoResponse
+            delegate?.didUpdateTodos()
+        } catch {
+            delegate?.didFailWithError(error)
         }
     }
     

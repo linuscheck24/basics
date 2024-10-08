@@ -23,15 +23,20 @@ class TodosViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
-        viewModel = TodosViewModel()
-        viewModel.delegate = self
-        
         title = "Todos"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        contentArea.addToSafeArea(to: view, padding: 20)
+        viewModel = TodosViewModel()
+        viewModel.delegate = self
         
+        contentArea.addToSafeArea(to: view, padding: 20)
         setupTableView()
+        
+        
+        // Load todos
+        Task{
+            await viewModel.fetchTodos()
+        }
     }
     
     func setupTableView(){
