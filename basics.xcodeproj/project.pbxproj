@@ -18,16 +18,25 @@
 		DB85EA1E2CB410A300CFABCF /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB85EA1D2CB410A300CFABCF /* KeychainService.swift */; };
 		DB85EA212CB4112600CFABCF /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB85EA202CB4112600CFABCF /* Auth.swift */; };
 		DB85EA242CB4219400CFABCF /* UIUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB85EA232CB4219400CFABCF /* UIUtil.swift */; };
-		DB8E5A2B2CB530590034440D /* basicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8E5A2A2CB530590034440D /* basicsTests.swift */; };
 		DBB9CB352CAD94F60033734C /* TodosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB9CB342CAD94F60033734C /* TodosViewController.swift */; };
 		DBBCAAC02CAD6B7500424C4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBCAABF2CAD6B7500424C4F /* AppDelegate.swift */; };
 		DBBCAAC22CAD6B7500424C4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBCAAC12CAD6B7500424C4F /* SceneDelegate.swift */; };
 		DBBCAAC42CAD6B7500424C4F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBCAAC32CAD6B7500424C4F /* LoginViewController.swift */; };
 		DBBCAAC92CAD6B7600424C4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBBCAAC82CAD6B7600424C4F /* Assets.xcassets */; };
+		DBF2E15F2CB55317005B24FA /* TodoViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF2E15E2CB55317005B24FA /* TodoViewModelTests.swift */; };
+		DBF2E1672CB55694005B24FA /* basicsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF2E1662CB55694005B24FA /* basicsUITests.swift */; };
+		DBF2E1692CB55694005B24FA /* basicsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF2E1682CB55694005B24FA /* basicsUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		DB8E5A2C2CB530590034440D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DBBCAAB42CAD6B7500424C4F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DBBCAABB2CAD6B7500424C4F;
+			remoteInfo = basics;
+		};
+		DBF2E16A2CB55694005B24FA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DBBCAAB42CAD6B7500424C4F /* Project object */;
 			proxyType = 1;
@@ -49,7 +58,6 @@
 		DB85EA202CB4112600CFABCF /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		DB85EA232CB4219400CFABCF /* UIUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtil.swift; sourceTree = "<group>"; };
 		DB8E5A282CB530590034440D /* basicsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = basicsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB8E5A2A2CB530590034440D /* basicsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = basicsTests.swift; sourceTree = "<group>"; };
 		DBB9CB342CAD94F60033734C /* TodosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosViewController.swift; sourceTree = "<group>"; };
 		DBBCAABC2CAD6B7500424C4F /* basics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = basics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBBCAABF2CAD6B7500424C4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +65,10 @@
 		DBBCAAC32CAD6B7500424C4F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DBBCAAC82CAD6B7600424C4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBBCAACD2CAD6B7600424C4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBF2E15E2CB55317005B24FA /* TodoViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModelTests.swift; sourceTree = "<group>"; };
+		DBF2E1642CB55694005B24FA /* basicsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = basicsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBF2E1662CB55694005B24FA /* basicsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = basicsUITests.swift; sourceTree = "<group>"; };
+		DBF2E1682CB55694005B24FA /* basicsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = basicsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +80,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		DBBCAAB92CAD6B7500424C4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBF2E1612CB55694005B24FA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -138,19 +157,20 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		DB8E5A292CB530590034440D /* basicsTests */ = {
+		DB8E5A292CB530590034440D /* basicsUnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				DB8E5A2A2CB530590034440D /* basicsTests.swift */,
+				DBF2E15E2CB55317005B24FA /* TodoViewModelTests.swift */,
 			);
-			path = basicsTests;
+			path = basicsUnitTests;
 			sourceTree = "<group>";
 		};
 		DBBCAAB32CAD6B7500424C4F = {
 			isa = PBXGroup;
 			children = (
 				DBBCAABE2CAD6B7500424C4F /* basics */,
-				DB8E5A292CB530590034440D /* basicsTests */,
+				DB8E5A292CB530590034440D /* basicsUnitTests */,
+				DBF2E1652CB55694005B24FA /* basicsUITests */,
 				DBBCAABD2CAD6B7500424C4F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -160,6 +180,7 @@
 			children = (
 				DBBCAABC2CAD6B7500424C4F /* basics.app */,
 				DB8E5A282CB530590034440D /* basicsTests.xctest */,
+				DBF2E1642CB55694005B24FA /* basicsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -181,6 +202,15 @@
 				DBBCAACD2CAD6B7600424C4F /* Info.plist */,
 			);
 			path = basics;
+			sourceTree = "<group>";
+		};
+		DBF2E1652CB55694005B24FA /* basicsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				DBF2E1662CB55694005B24FA /* basicsUITests.swift */,
+				DBF2E1682CB55694005B24FA /* basicsUITestsLaunchTests.swift */,
+			);
+			path = basicsUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +251,24 @@
 			productReference = DBBCAABC2CAD6B7500424C4F /* basics.app */;
 			productType = "com.apple.product-type.application";
 		};
+		DBF2E1632CB55694005B24FA /* basicsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DBF2E16C2CB55694005B24FA /* Build configuration list for PBXNativeTarget "basicsUITests" */;
+			buildPhases = (
+				DBF2E1602CB55694005B24FA /* Sources */,
+				DBF2E1612CB55694005B24FA /* Frameworks */,
+				DBF2E1622CB55694005B24FA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DBF2E16B2CB55694005B24FA /* PBXTargetDependency */,
+			);
+			name = basicsUITests;
+			productName = basicsUITests;
+			productReference = DBF2E1642CB55694005B24FA /* basicsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -237,6 +285,10 @@
 					};
 					DBBCAABB2CAD6B7500424C4F = {
 						CreatedOnToolsVersion = 15.4;
+					};
+					DBF2E1632CB55694005B24FA = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = DBBCAABB2CAD6B7500424C4F;
 					};
 				};
 			};
@@ -255,6 +307,7 @@
 			targets = (
 				DBBCAABB2CAD6B7500424C4F /* basics */,
 				DB8E5A272CB530590034440D /* basicsTests */,
+				DBF2E1632CB55694005B24FA /* basicsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -275,6 +328,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DBF2E1622CB55694005B24FA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -282,7 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB8E5A2B2CB530590034440D /* basicsTests.swift in Sources */,
+				DBF2E15F2CB55317005B24FA /* TodoViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +368,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DBF2E1602CB55694005B24FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBF2E1672CB55694005B24FA /* basicsUITests.swift in Sources */,
+				DBF2E1692CB55694005B24FA /* basicsUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -315,6 +384,11 @@
 			isa = PBXTargetDependency;
 			target = DBBCAABB2CAD6B7500424C4F /* basics */;
 			targetProxy = DB8E5A2C2CB530590034440D /* PBXContainerItemProxy */;
+		};
+		DBF2E16B2CB55694005B24FA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DBBCAABB2CAD6B7500424C4F /* basics */;
+			targetProxy = DBF2E16A2CB55694005B24FA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -524,6 +598,38 @@
 			};
 			name = Release;
 		};
+		DBF2E16D2CB55694005B24FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.linus.basicsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = basics;
+			};
+			name = Debug;
+		};
+		DBF2E16E2CB55694005B24FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.linus.basicsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = basics;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -550,6 +656,15 @@
 			buildConfigurations = (
 				DBBCAAD12CAD6B7600424C4F /* Debug */,
 				DBBCAAD22CAD6B7600424C4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DBF2E16C2CB55694005B24FA /* Build configuration list for PBXNativeTarget "basicsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBF2E16D2CB55694005B24FA /* Debug */,
+				DBF2E16E2CB55694005B24FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

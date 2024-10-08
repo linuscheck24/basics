@@ -1,5 +1,5 @@
 //
-//  basicsTests.swift
+//  TodoViewModelTests.swift
 //  basicsTests
 //
 //  Created by Linus Widing on 08.10.24.
