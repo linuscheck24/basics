@@ -9,7 +9,7 @@ import XCTest
 @testable import basics
 
 
-class MockAPIService: APIService {
+class MockTodoAPIService: TodoAPIService {
     var todos: [ToDo] = []
     var shouldReturnError = false
     
@@ -40,20 +40,20 @@ class MockTodoDelegate: TodoDelegate {
 class TodosViewModelTests: XCTestCase {
     
     var viewModel: TodosViewModel!
-    var mockAPIService: MockAPIService!
+    var mockTodoAPIService: MockTodoAPIService!
     var mockDelegate: MockTodoDelegate!
     
     override func setUp() {
         super.setUp()
-        mockAPIService = MockAPIService()
+        mockTodoAPIService = MockTodoAPIService()
         mockDelegate = MockTodoDelegate()
-        viewModel = TodosViewModel(apiService: mockAPIService)
+        viewModel = TodosViewModel(todoAPIService: mockTodoAPIService)
         viewModel.delegate = mockDelegate
     }
     
     override func tearDown() {
         viewModel = nil
-        mockAPIService = nil
+        mockTodoAPIService = nil
         mockDelegate = nil
         super.tearDown()
     }
@@ -62,7 +62,7 @@ class TodosViewModelTests: XCTestCase {
     func testFetchTodosSuccess() async {
         // Given
         let expectedTodos = ToDo.mockData
-        mockAPIService.todos = expectedTodos
+        mockTodoAPIService.todos = expectedTodos
         
         // When
         await viewModel.fetchTodos()
@@ -76,7 +76,7 @@ class TodosViewModelTests: XCTestCase {
     // Testing the failure of fetchTodos
     func testFetchTodosFailure() async {
         // Given
-        mockAPIService.shouldReturnError = true
+        mockTodoAPIService.shouldReturnError = true
         
         // When
         await viewModel.fetchTodos()

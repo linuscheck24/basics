@@ -19,7 +19,11 @@ class KeychainService {
     
     // MARK: - Save Access Token
     func saveAccessToken(_ token: String) {
-        save(key: "accessToken", data: token.data(using: .utf8)!)
+        guard let data = token.data(using: .utf8) else{
+            print("Token data error!")
+            return
+        }
+        save(key: "accessToken", data: data)
     }
     
     // MARK: - Get Access Token
@@ -29,7 +33,11 @@ class KeychainService {
     
     // MARK: - Save Refresh Token
     func saveRefreshToken(_ token: String) {
-        save(key: "refreshToken", data: token.data(using: .utf8)!)
+        guard let data = token.data(using: .utf8) else{
+            print("Token data error!")
+            return
+        }
+        save(key: "refreshToken", data: data)
     }
     
     // MARK: - Get Refresh Token

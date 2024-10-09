@@ -15,6 +15,10 @@ final class basicsUITests: XCTestCase {
 
     func testLogin() throws {
         let app = XCUIApplication()
+        
+        app.launchArguments += ["-AppleLanguages", "(en)"]
+        app.launchArguments += ["-AppleLocale", "en_US"]
+        
         app.launch()
         
         let usernameTextField = app.textFields["Username"]
@@ -55,7 +59,7 @@ final class basicsUITests: XCTestCase {
         
         firstCell.tap()
         
-        let deleteButton = app.buttons["Delete Todo"]
+        let deleteButton = app.buttons["Delete todo"]
         XCTAssertTrue(deleteButton.exists)
         
         deleteButton.tap()

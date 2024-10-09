@@ -21,7 +21,7 @@ class ViewControllerTests: XCTestCase {
     }
     
     func testTodosViewController(){
-        let vc = TodosViewController()
+        let vc = TodosViewController(viewModel: TodosViewModel())
         let viewModel = TodosViewModel()
         viewModel.todos = ToDo.mockData
         viewModel.todosAreLoaded = true
