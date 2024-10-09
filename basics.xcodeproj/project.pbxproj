@@ -10,6 +10,14 @@
 		DB1C06562CB30AB100C7617F /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1C06552CB30AB100C7617F /* UIViewExt.swift */; };
 		DB1C06582CB30C2E00C7617F /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1C06572CB30C2E00C7617F /* TodoTableViewCell.swift */; };
 		DB1C065A2CB3108200C7617F /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1C06592CB3108200C7617F /* ToDo.swift */; };
+		DB36D3D42CB6B6BC006E4262 /* AuthAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36D3D32CB6B6BC006E4262 /* AuthAPIService.swift */; };
+		DB36D3D62CB6B6CC006E4262 /* TodoAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36D3D52CB6B6CC006E4262 /* TodoAPIService.swift */; };
+		DB36D3D82CB6B79A006E4262 /* APIServicePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36D3D72CB6B79A006E4262 /* APIServicePaths.swift */; };
+		DB36D3DA2CB6B7C5006E4262 /* APIServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36D3D92CB6B7C5006E4262 /* APIServiceError.swift */; };
+		DB36D3DD2CB6B852006E4262 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB36D3DB2CB6B852006E4262 /* Localizable.strings */; };
+		DB36D3E02CB6B9B2006E4262 /* BasicStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36D3DF2CB6B9B2006E4262 /* BasicStrings.swift */; };
+		DB36D3E22CB6C56D006E4262 /* BasicsImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36D3E12CB6C56D006E4262 /* BasicsImages.swift */; };
+		DB36D3E52CB6C785006E4262 /* BasicsSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36D3E42CB6C785006E4262 /* BasicsSizes.swift */; };
 		DB85EA102CB3E63800CFABCF /* TodosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB85EA0F2CB3E63800CFABCF /* TodosViewModel.swift */; };
 		DB85EA142CB3F46900CFABCF /* TodoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB85EA132CB3F46900CFABCF /* TodoDetailViewController.swift */; };
 		DB85EA162CB3F4BC00CFABCF /* TodoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB85EA152CB3F4BC00CFABCF /* TodoDetailViewModel.swift */; };
@@ -59,6 +67,15 @@
 		DB1C06552CB30AB100C7617F /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
 		DB1C06572CB30C2E00C7617F /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
 		DB1C06592CB3108200C7617F /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
+		DB36D3D32CB6B6BC006E4262 /* AuthAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPIService.swift; sourceTree = "<group>"; };
+		DB36D3D52CB6B6CC006E4262 /* TodoAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAPIService.swift; sourceTree = "<group>"; };
+		DB36D3D72CB6B79A006E4262 /* APIServicePaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServicePaths.swift; sourceTree = "<group>"; };
+		DB36D3D92CB6B7C5006E4262 /* APIServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceError.swift; sourceTree = "<group>"; };
+		DB36D3DC2CB6B852006E4262 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DB36D3DE2CB6B987006E4262 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DB36D3DF2CB6B9B2006E4262 /* BasicStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicStrings.swift; sourceTree = "<group>"; };
+		DB36D3E12CB6C56D006E4262 /* BasicsImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicsImages.swift; sourceTree = "<group>"; };
+		DB36D3E42CB6C785006E4262 /* BasicsSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicsSizes.swift; sourceTree = "<group>"; };
 		DB85EA0F2CB3E63800CFABCF /* TodosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosViewModel.swift; sourceTree = "<group>"; };
 		DB85EA132CB3F46900CFABCF /* TodoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailViewController.swift; sourceTree = "<group>"; };
 		DB85EA152CB3F4BC00CFABCF /* TodoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailViewModel.swift; sourceTree = "<group>"; };
@@ -117,6 +134,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB36D3E32CB6C74D006E4262 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				DB36D3E12CB6C56D006E4262 /* BasicsImages.swift */,
+				DB36D3E42CB6C785006E4262 /* BasicsSizes.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		DB85EA0B2CB3E5E200CFABCF /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +192,10 @@
 			children = (
 				DB85EA1D2CB410A300CFABCF /* KeychainService.swift */,
 				DB85EA1A2CB40E7000CFABCF /* APIService.swift */,
+				DB36D3D32CB6B6BC006E4262 /* AuthAPIService.swift */,
+				DB36D3D52CB6B6CC006E4262 /* TodoAPIService.swift */,
+				DB36D3D72CB6B79A006E4262 /* APIServicePaths.swift */,
+				DB36D3D92CB6B7C5006E4262 /* APIServiceError.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -219,6 +249,7 @@
 		DBBCAABE2CAD6B7500424C4F /* basics */ = {
 			isa = PBXGroup;
 			children = (
+				DB36D3E32CB6C74D006E4262 /* UI */,
 				DB85EA222CB41C0B00CFABCF /* Utils */,
 				DB85EA1C2CB4108D00CFABCF /* Services */,
 				DB85EA172CB3F75300CFABCF /* SwiftUIViews */,
@@ -231,6 +262,8 @@
 				DBBCAAC12CAD6B7500424C4F /* SceneDelegate.swift */,
 				DBBCAAC82CAD6B7600424C4F /* Assets.xcassets */,
 				DBBCAACD2CAD6B7600424C4F /* Info.plist */,
+				DB36D3DB2CB6B852006E4262 /* Localizable.strings */,
+				DB36D3DF2CB6B9B2006E4262 /* BasicStrings.swift */,
 			);
 			path = basics;
 			sourceTree = "<group>";
@@ -356,6 +389,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = DBBCAAB32CAD6B7500424C4F;
 			packageReferences = (
@@ -393,6 +427,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBBCAAC92CAD6B7600424C4F /* Assets.xcassets in Resources */,
+				DB36D3DD2CB6B852006E4262 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,17 +465,24 @@
 				DB85EA1E2CB410A300CFABCF /* KeychainService.swift in Sources */,
 				DB1C065A2CB3108200C7617F /* ToDo.swift in Sources */,
 				DB85EA242CB4219400CFABCF /* UIUtil.swift in Sources */,
+				DB36D3D42CB6B6BC006E4262 /* AuthAPIService.swift in Sources */,
 				DBB9CB352CAD94F60033734C /* TodosViewController.swift in Sources */,
 				DBBCAAC42CAD6B7500424C4F /* LoginViewController.swift in Sources */,
+				DB36D3D82CB6B79A006E4262 /* APIServicePaths.swift in Sources */,
 				DB85EA102CB3E63800CFABCF /* TodosViewModel.swift in Sources */,
+				DB36D3E02CB6B9B2006E4262 /* BasicStrings.swift in Sources */,
 				DB1C06562CB30AB100C7617F /* UIViewExt.swift in Sources */,
 				DBBCAAC02CAD6B7500424C4F /* AppDelegate.swift in Sources */,
+				DB36D3DA2CB6B7C5006E4262 /* APIServiceError.swift in Sources */,
 				DBBCAAC22CAD6B7500424C4F /* SceneDelegate.swift in Sources */,
+				DB36D3E52CB6C785006E4262 /* BasicsSizes.swift in Sources */,
 				DB85EA192CB3F87000CFABCF /* TodoDeleteButton.swift in Sources */,
 				DB85EA142CB3F46900CFABCF /* TodoDetailViewController.swift in Sources */,
+				DB36D3D62CB6B6CC006E4262 /* TodoAPIService.swift in Sources */,
 				DB85EA212CB4112600CFABCF /* Auth.swift in Sources */,
 				DB85EA1B2CB40E7000CFABCF /* APIService.swift in Sources */,
 				DB85EA162CB3F4BC00CFABCF /* TodoDetailViewModel.swift in Sources */,
+				DB36D3E22CB6C56D006E4262 /* BasicsImages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +514,18 @@
 			targetProxy = DBF2E16A2CB55694005B24FA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DB36D3DB2CB6B852006E4262 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB36D3DC2CB6B852006E4262 /* en */,
+				DB36D3DE2CB6B987006E4262 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		DB8E5A2E2CB530590034440D /* Debug */ = {

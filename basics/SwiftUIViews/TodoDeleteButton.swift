@@ -19,9 +19,9 @@ struct TodoDeleteButton: View {
         Button(action: {
             delegate?.onDeleteClick()
         }, label: {
-            Text("Delete Todo")
+            Text(BasicStrings.deleteTodo.localized)
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, 10)
+                .padding(.vertical, BasicsSizes.paddingSmall)
         })
         .buttonStyle(.borderedProminent)
         .tint(.red)

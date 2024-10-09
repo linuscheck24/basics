@@ -29,7 +29,7 @@ class TodoTableViewCell: UITableViewCell {
     func set(todo: ToDo){
         todoTitle.text = todo.title
         todoDescription.text = todo.text
-        todoStatusIndicator.image = UIImage(systemName: todo.isDone ? "checkmark.circle.fill" : "checkmark.circle")
+        todoStatusIndicator.image = todo.isDone ? BasicsImages.checkmarkCircleFilled : BasicsImages.checkmarkCircle
     }
     
     func setupContentStack() {
@@ -39,7 +39,7 @@ class TodoTableViewCell: UITableViewCell {
         contentStack.axis = .horizontal
         contentStack.distribution = .fill
         contentStack.alignment = .center
-        contentStack.spacing = 10
+        contentStack.spacing = BasicsSizes.paddingSmall
         
         contentStack.pin(to: self)
         
@@ -59,8 +59,8 @@ class TodoTableViewCell: UITableViewCell {
         titleAndDescriptioStack.addArrangedSubview(todoTitle)
         titleAndDescriptioStack.addArrangedSubview(todoDescription)
         
-        todoTitle.font = UIFont.boldSystemFont(ofSize: 16)
-        todoDescription.font = UIFont.systemFont(ofSize: 14)
+        todoTitle.font = UIFont.boldSystemFont(ofSize: BasicsSizes.fontSizePrimary)
+        todoDescription.font = UIFont.systemFont(ofSize: BasicsSizes.fontSizeSecondary)
         todoDescription.textColor = .gray
     }
     
@@ -69,8 +69,8 @@ class TodoTableViewCell: UITableViewCell {
         todoStatusIndicator.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            todoStatusIndicator.widthAnchor.constraint(equalToConstant: 20),
-            todoStatusIndicator.heightAnchor.constraint(equalToConstant: 20)
+            todoStatusIndicator.widthAnchor.constraint(equalToConstant: BasicsSizes.doneIndicatorSize),
+            todoStatusIndicator.heightAnchor.constraint(equalToConstant: BasicsSizes.doneIndicatorSize)
         ])
     }
 }

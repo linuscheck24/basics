@@ -15,20 +15,20 @@ protocol TodoDelegate: AnyObject {
 class TodosViewModel {
     
     weak var delegate: TodoDelegate?
-    private let apiService: APIService
+    private let todoAPIService: TodoAPIService
     
     var todos: [ToDo] = []
     var selectedTodoIndex: Int?
     var todosAreLoaded: Bool = false
     
-    init(apiService: APIService = APIService.shared) {
-        self.apiService = apiService
+    init(todoAPIService: TodoAPIService = TodoAPIService.shared) {
+        self.todoAPIService = todoAPIService
     }
     
     func fetchTodos() async{
         if !todosAreLoaded{
             do {
-                let todoResponse = try await apiService.fetchUserTodos()
+                let todoResponse = try await todoAPIService.fetchUserTodos()
                 todos = todoResponse
                 delegate?.didUpdateTodos()
                 todosAreLoaded = true

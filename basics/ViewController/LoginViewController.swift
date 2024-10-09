@@ -22,13 +22,16 @@ class LoginViewController: UIViewController {
         title = "Login"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        contentArea.addToSafeArea(to: view, padding: 20)
-        
+        setupContentArea()
         setupLoginButton()
         setupPasswordTextField()
         setupUsernameTextField()
         setupSignupStackView()
         
+    }
+    
+    func setupContentArea(){
+        contentArea.addToSafeArea(to: view, padding: BasicsSizes.paddingMedium)
     }
     
     func setupSignupStackView(){
@@ -71,7 +74,7 @@ class LoginViewController: UIViewController {
         NSLayoutConstraint.activate([
             passwordTextField.leadingAnchor.constraint(equalTo: contentArea.leadingAnchor),
             passwordTextField.trailingAnchor.constraint(equalTo: contentArea.trailingAnchor),
-            passwordTextField.bottomAnchor.constraint(equalTo: loginButton.topAnchor, constant: -10),
+            passwordTextField.bottomAnchor.constraint(equalTo: loginButton.topAnchor, constant: -BasicsSizes.paddingSmall),
             passwordTextField.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
@@ -87,7 +90,7 @@ class LoginViewController: UIViewController {
         NSLayoutConstraint.activate([
             usernameTextField.leadingAnchor.constraint(equalTo: contentArea.leadingAnchor),
             usernameTextField.trailingAnchor.constraint(equalTo: contentArea.trailingAnchor),
-            usernameTextField.bottomAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: -10),
+            usernameTextField.bottomAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: -BasicsSizes.paddingSmall),
             usernameTextField.heightAnchor.constraint(equalToConstant: 50)
         ])
         
@@ -128,11 +131,10 @@ class LoginViewController: UIViewController {
             
             Task {
                 do {
-                    let tokenResponse = try await APIService.shared.login(username: username, password: password)
+                    let tokenResponse = try await AuthAPIService.shared.login(username: username, password: password)
                     print("Login successful: \(tokenResponse.access_token)")
                     
-                    let nextScreen = TodosViewController()
-                    nextScreen.viewModel = TodosViewModel()
+                    let nextScreen = TodosViewController(viewModel: TodosViewModel())
                     self.navigationController?.setViewControllers([nextScreen], animated: true)
                 } catch let apiError as APIServiceError{
                     print("Login failed: \(apiError.localizedDescription)")

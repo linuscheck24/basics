@@ -6,79 +6,85 @@
 //
 import Foundation
 
+// TODOd: - Refactor this class to make it reusable for any API call, not just specific ones like login or fetching todos.
+// Suggestions:
+// 1. Generalize the `makeRequest` method further by allowing dynamic HTTP methods, flexible headers, and body data.
+// 2. Avoid hardcoding endpoints; consider passing baseURL or endpoints as parameters or configuring them externally.
+// 3. Add support for query parameters if needed for GET requests.
+// 4. Ensure proper error handling for all kinds of API responses and status codes.
+// 5. Structure the class in a way that adding new API calls only requires defining the endpoint and the expected response type.
 class APIService {
     static let shared = APIService()
-    private let baseURL = "http://localhost:8000"
     
-    private var authToken: String? {
-        get { KeychainService.shared.getAccessToken() }
-        set { if let newValue = newValue { KeychainService.shared.saveAccessToken(newValue) } else { KeychainService.shared.delete(key: "accessToken") } }
-    }
+    // TODOd: - Move the `baseURL` and all endpoint paths to a centralized class or enum.
+    // This will allow for easier management of API routes, and it ensures that all endpoint URLs are handled in one place.
+    // Consider creating a class or enum like `APIEndpoints` where you define all the paths,
+    // making it easier to update or modify them as needed
     
-    func login(username: String, password: String) async throws -> TokenResponse{
-        guard let url = URL(string: "\(baseURL)/token") else{
+    // Helper method to make a request
+    func makeRequest(
+        Endpoint: APIPath,
+        HTTPMethod: String,
+        contentType: String? = nil,
+        queryParams: [String: String]? = nil,
+        bodyParams: [String: String]? = nil,
+        body: Codable? = nil,
+        authToken: String? = nil
+    ) async throws -> Data {
+        
+        // Construct URL with query parameters if provided
+        guard var urlComponents = URLComponents(string: "\(APIPath.baseURL.rawValue)\(Endpoint.rawValue)") else{
+            throw APIServiceError.invalidURL
+        }
+        
+        if let queryParams = queryParams {
+            urlComponents.queryItems = queryParams.map { URLQueryItem(name: $0.key, value: $0.value) }
+        }
+        
+        guard let url = urlComponents.url else {
             throw APIServiceError.invalidURL
         }
         
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = HTTPMethod
         
-        let bodyParams = "username=\(username)&password=\(password)&grant_type=password"
-        request.httpBody = bodyParams.data(using: .utf8)
+        if let contentType = contentType {
+            request.setValue(contentType, forHTTPHeaderField: "Content-Type")
+        }
         
+        // Handle different body types (form-urlencoded or JSON)
+        if let bodyParams = bodyParams {
+            // Encode as application/x-www-form-urlencoded
+            let bodyString = bodyParams
+                .map { "\($0.key)=\($0.value)" }
+                .joined(separator: "&")
+            
+            request.httpBody = bodyString.data(using: .utf8)
+        }
+        else if let body = body {
+            // Encode as JSON
+            let jsonData = try JSONEncoder().encode(body)
+            request.httpBody = jsonData
+        }
+        
+        // Set auth token if available
+        if let authToken = authToken{
+            request.setValue("Bearer \(authToken)", forHTTPHeaderField: "Authorization")
+        }
+        
+        // Execute the request
         let (data, response) = try await URLSession.shared.data(for: request)
         
-        guard let response = response as? HTTPURLResponse else {
-            throw APIServiceError.invalidResponse
-        }
-        print(response.statusCode)
-
-        if response.statusCode == 401 {
-            throw APIServiceError.unauthorized
-        }
-        else if response.statusCode != 200 {
+        // Check for valid response (status code 2xx)
+        guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
             throw APIServiceError.invalidResponse
         }
         
-        let tokenResponse = try JSONDecoder().decode(TokenResponse.self, from: data)
-        self.authToken = tokenResponse.access_token
-        
-        return tokenResponse
-    }
-    
-    func fetchUserTodos() async throws -> [ToDo]{
-        guard let url = URL(string: "\(baseURL)/todos/") else{
-            throw APIServiceError.invalidURL
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        if let token = authToken {
-            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        } else {
+        if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 401 {
             throw APIServiceError.unauthorized
         }
         
-        let (data, response) = try await URLSession.shared.data(for: request)
-        
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else{
-            throw APIServiceError.invalidResponse
-        }
-        
-        let todoResponse = try JSONDecoder().decode([ToDo].self, from: data)
-        
-        
-        return todoResponse
+        return data
     }
+
 }
-
-
-enum APIServiceError: Error{
-    case invalidURL
-    case invalidResponse
-    case unauthorized
-}
-

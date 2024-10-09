@@ -39,6 +39,7 @@ struct Category: Identifiable, Codable, Hashable {
     }
 }
 
+// MARK: - Todo mock data
 extension ToDo {
     static let mockData: [ToDo] = [
         ToDo(id: 1, title: "Buy groceries", text: "Milk, Bread, Eggs", isDone: false, ownerId: 1, position: 1),

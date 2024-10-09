@@ -8,17 +8,25 @@
 import UIKit
 import SwiftUI
 
-protocol TodoDetailViewControllerDelegate: AnyObject {
+protocol TodoDeletionDelegate: AnyObject {
     func didDeleteTodo()
 }
 
 class TodoDetailViewController: UIViewController {
-    
-    var viewModel: TodoDetailViewModel!
-    weak var delegate: TodoDetailViewControllerDelegate?
+    var viewModel: TodoDetailViewModel
+    weak var delegate: TodoDeletionDelegate?
     
     let titleAndDescription = UIStackView()
     let contentArea = UIView()
+    
+    init(viewModel: TodoDetailViewModel){
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +34,13 @@ class TodoDetailViewController: UIViewController {
         
         title = viewModel.getTitle()
         
-        contentArea.addToSafeArea(to: view, padding: 10)
-        
+        setupContenArea()
         setupTitleAndDescription()
         setupDeleteButton()
+    }
+    
+    func setupContenArea(){
+        contentArea.addToSafeArea(to: view, padding: BasicsSizes.paddingSmall)
     }
     
     func setupDeleteButton() {
@@ -56,7 +67,7 @@ class TodoDetailViewController: UIViewController {
         titleAndDescription.translatesAutoresizingMaskIntoConstraints = false
         
         titleAndDescription.axis = .vertical
-        titleAndDescription.spacing = 20
+        titleAndDescription.spacing = BasicsSizes.paddingMedium
         titleAndDescription.alignment = .leading
         
         let titleLabel = UILabel()
@@ -79,7 +90,7 @@ class TodoDetailViewController: UIViewController {
     
 }
 
-
+// MARK: - TodoDeleteButtonDelegate
 extension TodoDetailViewController: TodoDeleteButtonDelegate{
     func onDeleteClick() {
         self.delegate?.didDeleteTodo()

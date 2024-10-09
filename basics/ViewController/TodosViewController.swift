@@ -13,10 +13,19 @@ class TodosViewController: UIViewController {
     let tableView = UITableView()
     let contentArea = UIView()
     
-    var viewModel: TodosViewModel!
+    var viewModel: TodosViewModel
     
     struct Cells{
         static let todoCell = "ToDoCell"
+    }
+    
+    init(viewModel: TodosViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -27,7 +36,7 @@ class TodosViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         
-        contentArea.addToSafeArea(to: view, padding: 20)
+        setupContentArea()
         setupTableView()
         
         
@@ -39,6 +48,10 @@ class TodosViewController: UIViewController {
                 await viewModel.fetchTodos()
             }
         }
+    }
+    
+    func setupContentArea(){
+        contentArea.addToSafeArea(to: view, padding: BasicsSizes.paddingMedium)
     }
     
     func setupTableView(){
@@ -58,24 +71,30 @@ class TodosViewController: UIViewController {
     
 }
 
-extension TodosViewController: UITableViewDelegate, UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.getTodoCount()
-    }
-    
+// MARK: - UITableViewDelegate
+extension TodosViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedTodo = viewModel.getTodoForIndex(indexPath.row)
         viewModel.selectedTodoIndex = indexPath.row
         let detailViewModel = TodoDetailViewModel(selectedTodo)
-        let detailViewController = TodoDetailViewController()
-        detailViewController.viewModel = detailViewModel
+        let detailViewController = TodoDetailViewController(viewModel: detailViewModel)
         detailViewController.delegate = self
         
         navigationController?.pushViewController(detailViewController, animated: true)
     }
+}
+
+// MARK: - UITableViewDataSource
+extension TodosViewController: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.getTodoCount()
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.todoCell) as! TodoTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Cells.todoCell) as? TodoTableViewCell else{
+            // Return a default cell in case of failure
+            return UITableViewCell()
+        }
         let todo = viewModel.getTodoForIndex(indexPath.row)
         cell.set(todo: todo)
         cell.selectionStyle = .none
@@ -85,6 +104,7 @@ extension TodosViewController: UITableViewDelegate, UITableViewDataSource{
     }
 }
 
+// MARK: - TodoDelegate
 extension TodosViewController: TodoDelegate{
     func didUpdateTodos() {
         DispatchQueue.main.async { [weak self] in
@@ -97,7 +117,8 @@ extension TodosViewController: TodoDelegate{
     }
 }
 
-extension TodosViewController: TodoDetailViewControllerDelegate{
+// MARK: - TodoDetailViewControllerDelegate
+extension TodosViewController: TodoDeletionDelegate{
     func didDeleteTodo() {
         viewModel.deleteSelectedTodo()
     }
